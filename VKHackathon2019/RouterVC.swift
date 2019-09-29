@@ -59,6 +59,8 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    var toIATA = "LED"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,7 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
             
             if let t = trip.tickets.first {
                 let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.fromIATA, toIATA: t.toIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt).addingTimeInterval(7200)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
+                toIATA = ticket.toIATA
                 dh = "с \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.departureAt))) по \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.returnAt)))"
                 final.append(ticket)
                 price = t.price
@@ -116,7 +119,7 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
             let ticket2 = Aviaticket(id: 1, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: "TXL", toIATA: "VKO", timeArrival: "6 октября в 11:30", timeDeparture: "6 октября в 14:00", companyName: "Pobeda")
             final.append(ticket2)
             buyButton.setTitle("КУПИТЬ ЗА \(30482)₽", for: .normal)
-
+            toIATA = "LUT"
         }
     }
     
@@ -126,7 +129,7 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
     }
     
     @IBAction func buyAction(_ sender: Any) {
-        let safari = SFSafariViewController(url: URL(string: "https://aviasales.ru")!)
+        let safari = SFSafariViewController(url: URL(string: "https://aviasales.ru/search/MOW0210\(toIATA)0710")!)
         safari.delegate = self
         present(safari, animated: true, completion: nil)
     }
