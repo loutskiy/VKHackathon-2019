@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import SDWebImage
 
 class Aviaticket {
     var id: Int
@@ -47,6 +48,7 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var routerNameLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
     
     var places = [PlaceObject]()
     var trip: TripObject!
@@ -64,16 +66,33 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        routerNameLabel.text = "Ваш маршрут в \(trip.city ?? "") (\(trip.country ?? ""))"
+        
+        var dh = ""
+        var price = 0
+        
         if let t = trip.tickets.first {
             let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.fromIATA, toIATA: t.toIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt).addingTimeInterval(7200)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
+            dh = "с \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.departureAt))) по \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.returnAt)))"
             final.append(ticket)
+            price = t.price
         }
         
-        final.append(Hotel(id: 0, name: "Radisson", dateLabel: "c 21 по 25 ноября", address: "Vienna, City Center"))
+        if let h = trip.hotels.first {
+            let hotel = Hotel(id: h.id, name: h.label, dateLabel: dh, address: "\(trip.country ?? ""), \(trip.city ?? "")")
+            final.append(hotel)
+            price += h.price
+        }
+        
         for i in places {
             final.append(i)
         }
-        final.append(planes.last!)
+        if let t = trip.tickets.first {
+            let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.toIATA, toIATA: t.fromIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt).addingTimeInterval(14400)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
+            final.append(ticket)
+        }
+        
+        buyButton.setTitle("КУПИТЬ ЗА \(price)₽", for: .normal)
     }
     
 
@@ -100,11 +119,12 @@ extension RouterVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let i = final[indexPath.row]
-        if let i = i as? Place {
+        if let i = i as? PlaceObject {
             let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceCell
-            cell.emojiImage.image = i.emoji
-            cell.placeImageView.image = i.image
+            cell.emojiImage.text = i.emoji
+            cell.placeImageView.sd_setImage(with: URL(string: i.image), completed: nil)
             cell.placeNameLabel.text = i.name
+            cell.placeLocationLabel.text = trip.city
             return cell
         } else if let i = i as? Hotel {
             let cell = tableView.dequeueReusableCell(withIdentifier: "hotelCell") as! HotelCell

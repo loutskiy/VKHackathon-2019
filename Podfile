@@ -12,5 +12,6 @@ target 'VKHackathon2019' do
   pod 'VerticalCardSwiper'
   pod 'FloatingPanel'
   pod 'ObjectMapper'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
 end

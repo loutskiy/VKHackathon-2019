@@ -62,6 +62,8 @@ class PlacesVC: UIViewController, VerticalCardSwiperDatasource, VerticalCardSwip
     @objc func nextAction() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "RouterVC") as! RouterVC
         vc.modalPresentationStyle = .fullScreen
+        vc.trip = trip
+        vc.places = selected
 //        vc.places = selected
         present(vc, animated: true, completion: nil)
     }
@@ -76,8 +78,8 @@ class PlacesVC: UIViewController, VerticalCardSwiperDatasource, VerticalCardSwip
             if let p = trip.places.first {
                 let place = p[index]
                 cardCell.backImageView.sd_setImage(with: URL(string: place.image), completed: nil)
-                cardCell.descriptionLabel.text = place.name
-                cardCell.emojiImage.image = #imageLiteral(resourceName: "😍")
+                cardCell.descriptionLabel.text = place.description ?? ""
+                cardCell.emojiImage.text = place.emoji
                 cardCell.titleLabel.text = place.name
                 cardCell.priceLabel.text = "\(place.price ?? "")"
                 return cardCell

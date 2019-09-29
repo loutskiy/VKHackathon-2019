@@ -9,6 +9,7 @@
 import UIKit
 import FloatingPanel
 import SDWebImage
+import MBProgressHUD
 
 struct Destination {
     var id: Int
@@ -63,9 +64,11 @@ class ResultsViewController: UIViewController, FloatingPanelControllerDelegate {
             str += i.Image
         }
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         ServerManager.getList(emoji: str) { (tr) in
             self.trips = tr
             self.tableView.reloadData()
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 
@@ -89,7 +92,7 @@ class ResultsViewController: UIViewController, FloatingPanelControllerDelegate {
 
 extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -110,11 +113,16 @@ extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cityImageView.sd_setImage(with: URL(string: item.img), completed: nil)
         cell.cityNameLable.text = item.city
         cell.countryLabel.text = item.country
+        var i = 0
         if let t = item.tickets.first {
             let date = DateConverter().convertStringToDate(str: t.departureAt)
             cell.dateLabel.text = "С \(DateConverter().convertDateToStr(date: date))"
-            cell.priceLabel.text = "от \(t.price ?? 0)₽"
+            i = t.price
         }
+        if let h = item.hotels.first {
+            i += h.price
+        }
+        cell.priceLabel.text = "от \(i)₽"
         if let e = item.emoji.first {
             cell.emojiImageView.text = e
         }

@@ -41,6 +41,8 @@ class PlaceObject: Mappable {
     var image: String!
     var price: String!
     var coordinates: [Float]!
+    var emoji: String!
+    var description: String!
     
     required init?(map: Map) {
 
@@ -52,6 +54,8 @@ class PlaceObject: Mappable {
         image <- map["image"]
         price <- map["price"]
         coordinates <- map["coordinates"]
+        emoji <- map["emoji"]
+        description <- map["description"]
     }
 }
 
@@ -92,6 +96,7 @@ class HotelObject: Mappable {
     var fullName: String!
     var locationId: Int!
     var locationName: String!
+    var price: Int!
     
     required init?(map: Map) {
 
@@ -101,10 +106,11 @@ class HotelObject: Mappable {
     func mapping(map: Map) {
         location <- map["location"]
         score <- map["_score"]
-        label <- map["label"]
+        label <- map["name"]
         id <- map["id"]
         fullName <- map["fullName"]
         locationId <- map["locationId"]
         locationName <- map["locationName"]
+        price <- map["price"]
     }
 }

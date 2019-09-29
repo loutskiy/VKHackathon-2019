@@ -11,9 +11,9 @@ import UIKit
 class PlaceCell: UITableViewCell {
 
     @IBOutlet weak var placeImageView: UIImageView!
-    @IBOutlet weak var emojiImage: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeLocationLabel: UILabel!
+    @IBOutlet weak var emojiImage: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

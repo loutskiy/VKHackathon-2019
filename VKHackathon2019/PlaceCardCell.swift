@@ -11,10 +11,10 @@ import VerticalCardSwiper
 
 class PlaceCardCell: CardCell {
     @IBOutlet weak var backImageView: UIImageView!
-    @IBOutlet weak var emojiImage: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var emojiImage: UILabel!
     
     override func prepareForReuse() {
            super.prepareForReuse()
