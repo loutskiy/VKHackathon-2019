@@ -66,33 +66,58 @@ class RouterVC: UIViewController, SFSafariViewControllerDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
-        routerNameLabel.text = "Ваш маршрут в \(trip.city ?? "") (\(trip.country ?? ""))"
-        
-        var dh = ""
-        var price = 0
-        
-        if let t = trip.tickets.first {
-            let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.fromIATA, toIATA: t.toIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt).addingTimeInterval(7200)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
-            dh = "с \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.departureAt))) по \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.returnAt)))"
-            final.append(ticket)
-            price = t.price
+        if trip != nil {
+            
+            routerNameLabel.text = "Ваш маршрут в \(trip.city ?? "") (\(trip.country ?? ""))"
+            
+            var dh = ""
+            var price = 0
+            
+            if let t = trip.tickets.first {
+                let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.fromIATA, toIATA: t.toIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.departureAt).addingTimeInterval(7200)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
+                dh = "с \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.departureAt))) по \(DateConverter().convertDateToStr(date: DateConverter().convertStringToDate(str: t.returnAt)))"
+                final.append(ticket)
+                price = t.price
+            }
+            
+            if let h = trip.hotels.first {
+                let hotel = Hotel(id: h.id, name: h.label, dateLabel: dh, address: "\(trip.country ?? ""), \(trip.city ?? "")")
+                final.append(hotel)
+                price += h.price
+            }
+            
+            for i in places {
+                final.append(i)
+            }
+            if let t = trip.tickets.first {
+                let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.toIATA, toIATA: t.fromIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt).addingTimeInterval(14400)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
+                final.append(ticket)
+            }
+            
+            buyButton.setTitle("КУПИТЬ ЗА \(price)₽", for: .normal)
+        } else {
+            routerNameLabel.text = "Ваш маршрут по фильму Евротур 🇪🇺"
+            var price = 0
+            let ticket1 = Aviaticket(id: 0, company: #imageLiteral(resourceName: "1200px-Wizz_Air_logo_2015.svg"), fromIATA: "VKO", toIATA: "LUT", timeArrival: "2 октября в 11:30", timeDeparture: "2 октября в 13:00", companyName: "WizzAir")
+            price += 2100
+            final.append(ticket1)
+            let hotel1 = Hotel(id: 0, name: "Hotel London", dateLabel: "2 октября", address: "Англия, Лондон")
+            let hotel2 = Hotel(id: 1, name: "Paris Grand", dateLabel: "3 октября", address: "Франция, Париж")
+            let hotel3 = Hotel(id: 2, name: "AmsterLove", dateLabel: "4 октября", address: "Нидерланды, Амстердам")
+            let hotel4 = Hotel(id: 3, name: "Elisabeth Old Town", dateLabel: "5 октября", address: "Словакия, Братислава")
+            let hotel5 = Hotel(id: 3, name: "Rome residence", dateLabel: "6 октября", address: "Италия, Рим")
+            let hotel6 = Hotel(id: 3, name: "Mercure", dateLabel: "6 октября", address: "Германия, Берлин")
+            final.append(hotel1)
+            final.append(hotel2)
+            final.append(hotel3)
+            final.append(hotel4)
+            final.append(hotel5)
+            final.append(hotel6)
+            let ticket2 = Aviaticket(id: 1, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: "TXL", toIATA: "VKO", timeArrival: "6 октября в 11:30", timeDeparture: "6 октября в 14:00", companyName: "Pobeda")
+            final.append(ticket2)
+            buyButton.setTitle("КУПИТЬ ЗА \(30482)₽", for: .normal)
+
         }
-        
-        if let h = trip.hotels.first {
-            let hotel = Hotel(id: h.id, name: h.label, dateLabel: dh, address: "\(trip.country ?? ""), \(trip.city ?? "")")
-            final.append(hotel)
-            price += h.price
-        }
-        
-        for i in places {
-            final.append(i)
-        }
-        if let t = trip.tickets.first {
-            let ticket = Aviaticket(id: 0, company: #imageLiteral(resourceName: "Pobeda_logo.svg"), fromIATA: t.toIATA, toIATA: t.fromIATA, timeArrival: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt)), timeDeparture: DateConverter().convertDateTimerToStr(date: DateConverter().convertStringToDate(str: t.returnAt).addingTimeInterval(14400)), companyName: "\(t.airline ?? "")-\(t.flightNumber ?? 0)")
-            final.append(ticket)
-        }
-        
-        buyButton.setTitle("КУПИТЬ ЗА \(price)₽", for: .normal)
     }
     
 

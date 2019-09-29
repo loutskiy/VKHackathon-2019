@@ -92,49 +92,81 @@ class ResultsViewController: UIViewController, FloatingPanelControllerDelegate {
 
 extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var str = ""
+        for i in emojies {
+            str += i.Image
+        }
+        if str == "💂❤️🌈🥨" {
+            return 2
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Наши рекоммендации"
+            return "Наши рекомендации"
         } else {
-            return "Собери сам"
+            return "Секретная поездка"
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trips.count
+        if section == 0 {
+            return trips.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = trips[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TripCell
-        cell.cityImageView.sd_setImage(with: URL(string: item.img), completed: nil)
-        cell.cityNameLable.text = item.city
-        cell.countryLabel.text = item.country
-        var i = 0
-        if let t = item.tickets.first {
-            let date = DateConverter().convertStringToDate(str: t.departureAt)
-            cell.dateLabel.text = "С \(DateConverter().convertDateToStr(date: date))"
-            i = t.price
+        if indexPath.section == 0 {
+            let item = trips[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TripCell
+            cell.cityImageView.sd_setImage(with: URL(string: item.img), completed: nil)
+            cell.cityNameLable.text = item.city
+            cell.countryLabel.text = item.country
+            var i = 0
+            if let t = item.tickets.first {
+                let date = DateConverter().convertStringToDate(str: t.departureAt)
+                cell.dateLabel.text = "С \(DateConverter().convertDateToStr(date: date))"
+                i = t.price
+            }
+            if let h = item.hotels.first {
+                i += h.price
+            }
+            cell.priceLabel.text = "от \(i)₽"
+            if let e = item.emoji.first {
+                cell.emojiImageView.text = e
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TripCell
+            cell.cityImageView.image = #imageLiteral(resourceName: "Eurotrip")
+            cell.cityNameLable.text = "Евротур"
+            cell.countryLabel.text = "Европа"
+            var i = 0
+            cell.dateLabel.text = "С 2 октября"
+            i = 30432
+            cell.priceLabel.text = "от \(i)₽"
+            cell.emojiImageView.text = "🇪🇺"
+            return cell
         }
-        if let h = item.hotels.first {
-            i += h.price
-        }
-        cell.priceLabel.text = "от \(i)₽"
-        if let e = item.emoji.first {
-            cell.emojiImageView.text = e
-        }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let trip = trips[indexPath.row]
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PlacesVC") as! PlacesVC
-        vc.trip = trip
-        navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 0 {
+            let trip = trips[indexPath.row]
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PlacesVC") as! PlacesVC
+            vc.trip = trip
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "RouterVC") as! RouterVC
+            vc.modalPresentationStyle = .fullScreen
+    //        vc.places = selected
+            present(vc, animated: true, completion: nil)
+        }
     }
 }
 

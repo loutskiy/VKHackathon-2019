@@ -89,7 +89,7 @@ class PlacesVC: UIViewController, VerticalCardSwiperDatasource, VerticalCardSwip
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
-        if let p = trip.places.first {
+        if let places = trip.places, let p = places.first {
             return p.count
         }
         return 0
