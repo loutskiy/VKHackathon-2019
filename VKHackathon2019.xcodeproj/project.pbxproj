@@ -21,7 +21,6 @@
 		C4015A5D23401B2F00295D9F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4015A5C23401B2F00295D9F /* Models.swift */; };
 		C4015A5F234086E100295D9F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4015A5E234086E100295D9F /* DateConverter.swift */; };
 		C4E68F1D233E79A600A68801 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E68F1C233E79A600A68801 /* AppDelegate.swift */; };
-		C4E68F1F233E79A600A68801 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E68F1E233E79A600A68801 /* SceneDelegate.swift */; };
 		C4E68F21233E79A600A68801 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E68F20233E79A600A68801 /* ViewController.swift */; };
 		C4E68F24233E79A600A68801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E68F22233E79A600A68801 /* Main.storyboard */; };
 		C4E68F26233E79A800A68801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E68F25233E79A800A68801 /* Assets.xcassets */; };
@@ -52,7 +51,6 @@
 		C4015A61234087FD00295D9F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C4E68F19233E79A600A68801 /* VKHackathon2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKHackathon2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E68F1C233E79A600A68801 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4E68F1E233E79A600A68801 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C4E68F20233E79A600A68801 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4E68F23233E79A600A68801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4E68F25233E79A800A68801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				C4E68F1C233E79A600A68801 /* AppDelegate.swift */,
-				C4E68F1E233E79A600A68801 /* SceneDelegate.swift */,
 				C4E68F20233E79A600A68801 /* ViewController.swift */,
 				C4E68F34233F54EC00A68801 /* UIViewController+extension.swift */,
 				C4E68F30233F506F00A68801 /* EmojiViewCell.swift */,
@@ -274,7 +271,6 @@
 				C4015A57233F931700295D9F /* PlaceCell.swift in Sources */,
 				C4E68F31233F506F00A68801 /* EmojiViewCell.swift in Sources */,
 				C4E68F1D233E79A600A68801 /* AppDelegate.swift in Sources */,
-				C4E68F1F233E79A600A68801 /* SceneDelegate.swift in Sources */,
 				C4015A4E233F6C6B00295D9F /* PlaceCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8YBKQD6YZD;
 				INFOPLIST_FILE = VKHackathon2019/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8YBKQD6YZD;
 				INFOPLIST_FILE = VKHackathon2019/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
