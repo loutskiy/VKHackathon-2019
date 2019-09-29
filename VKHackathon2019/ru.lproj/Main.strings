@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "Ваш маршрут в Вену (Австрия)"; ObjectID = "0gq-nG-P0M"; */
+"0gq-nG-P0M.text" = "Ваш маршрут в Вену (Австрия)";
+
+/* Class = "UILabel"; text = "New York"; ObjectID = "18x-9m-yAv"; */
+"18x-9m-yAv.text" = "New York";
+
+/* Class = "UILabel"; text = "💩"; ObjectID = "6eY-xt-d2X"; */
+"6eY-xt-d2X.text" = "💩";
+
+/* Class = "UIButton"; normalTitle = "ПРИМЕНИТЬ"; ObjectID = "AAV-DK-WGH"; */
+"AAV-DK-WGH.normalTitle" = "ПРИМЕНИТЬ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EhE-0O-8fA"; */
+"EhE-0O-8fA.text" = "Label";
+
+/* Class = "UILabel"; text = "Pobeda"; ObjectID = "GF3-Tq-Y3o"; */
+"GF3-Tq-Y3o.text" = "Pobeda";
+
+/* Class = "UILabel"; text = "USA"; ObjectID = "OUc-lb-M9C"; */
+"OUc-lb-M9C.text" = "USA";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Os8-jp-cWP"; */
+"Os8-jp-cWP.text" = "Label";
+
+/* Class = "UILabel"; text = "Radisson"; ObjectID = "U2A-WU-hob"; */
+"U2A-WU-hob.text" = "Radisson";
+
+/* Class = "UILabel"; text = "от 25000₽"; ObjectID = "U4w-SJ-YgT"; */
+"U4w-SJ-YgT.text" = "от 25000₽";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Wbc-eK-ajr"; */
+"Wbc-eK-ajr.text" = "Label";
+
+/* Class = "UILabel"; text = "VIE"; ObjectID = "XFI-Iq-xqP"; */
+"XFI-Iq-xqP.text" = "VIE";
+
+/* Class = "UILabel"; text = "Задайте свое настроение"; ObjectID = "Y5o-wM-AuB"; */
+"Y5o-wM-AuB.text" = "Задайте свое настроение";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Zg8-Ut-zNC"; */
+"Zg8-Ut-zNC.text" = "Label";
+
+/* Class = "UILabel"; text = "DME"; ObjectID = "b0o-Tq-O3b"; */
+"b0o-Tq-O3b.text" = "DME";
+
+/* Class = "UILabel"; text = "Авиакомпания:"; ObjectID = "bms-D3-f9Z"; */
+"bms-D3-f9Z.text" = "Авиакомпания:";
+
+/* Class = "UILabel"; text = "Лувр"; ObjectID = "cep-jI-Q3Q"; */
+"cep-jI-Q3Q.text" = "Лувр";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eJR-k5-2e2"; */
+"eJR-k5-2e2.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Результаты"; ObjectID = "fab-0P-jxv"; */
+"fab-0P-jxv.title" = "Результаты";
+
+/* Class = "UIButton"; normalTitle = "КУПИТЬ ЗА $199"; ObjectID = "hsj-5V-zvV"; */
+"hsj-5V-zvV.normalTitle" = "КУПИТЬ ЗА $199";
+
+/* Class = "UILabel"; text = "😘"; ObjectID = "ktp-BJ-Z4i"; */
+"ktp-BJ-Z4i.text" = "😘";
+
+/* Class = "UIButton"; normalTitle = "ДАЛЕЕ"; ObjectID = "nVb-66-VPO"; */
+"nVb-66-VPO.normalTitle" = "ДАЛЕЕ";
+
+/* Class = "UILabel"; text = "Начало:"; ObjectID = "pPr-hO-Rle"; */
+"pPr-hO-Rle.text" = "Начало:";
+
+/* Class = "UILabel"; text = "Конец:"; ObjectID = "pfc-Jc-uEZ"; */
+"pfc-Jc-uEZ.text" = "Конец:";
+
+/* Class = "UILabel"; text = "С 25 января по 4 февраля 2020"; ObjectID = "qyS-Vj-c3g"; */
+"qyS-Vj-c3g.text" = "С 25 января по 4 февраля 2020";
+
+/* Class = "UILabel"; text = "😀"; ObjectID = "s2X-kJ-2F4"; */
+"s2X-kJ-2F4.text" = "😀";
+
+/* Class = "UILabel"; text = "Введите диапазон поездки"; ObjectID = "wnZ-sc-uxs"; */
+"wnZ-sc-uxs.text" = "Введите диапазон поездки";
+
+/* Class = "UILabel"; text = "—"; ObjectID = "wph-te-6ap"; */
+"wph-te-6ap.text" = "—";

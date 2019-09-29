@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-VKHackathon2019/Pods-VKHackathon2019-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/VerticalCardSwiper/VerticalCardSwiper.framework
